@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+*.sqlite3
+*.db
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
+.pnpm-store/
+
+# Other large files
+*.zip
+*.tar.gz
