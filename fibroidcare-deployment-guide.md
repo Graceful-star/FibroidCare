@@ -1,7 +1,7 @@
 # FibroidCare Deployment Guide
 
 ## Overview
-FibroidCare is a complete AI/ML-based fibroid risk assessment application with a React frontend and Flask backend. This guide will help you deploy it on your own infrastructure.
+FibroidCare is a complete AI/ML-based fibroid risk assessment application with a React frontend, Flask backend, and a mobile app built using React Native and Expo. This guide will help you deploy it on your own infrastructure.
 
 ## Project Structure
 ```
@@ -25,12 +25,23 @@ fibroidcare-frontend/         # React frontend source
 │   └── main.jsx            # Entry point
 ├── package.json            # Node.js dependencies
 └── vite.config.js          # Build configuration
+
+FibroidCareMobile/           # React Native mobile app (Expo)
+├── src/
+│   ├── components/          # Mobile UI components
+│   ├── screens/             # App screens (e.g., Home, Prediction)
+│   ├── App.js               # Main app entry point
+│   └── navigation /         # API integration for backend communication
+├── app.json                 # Expo configuration
+├── package.json             # Node.js dependencies
+└── assets/                  # Images and static assets
 ```
 
 ## Prerequisites
 - Python 3.11+
 - Node.js 20+
 - npm or pnpm
+- Expo Go app (for mobile development, SDK 50)
 
 ## Local Development Setup
 
@@ -73,6 +84,26 @@ fibroidcare-frontend/         # React frontend source
    pnpm run dev  # or npm run dev
    ```
    The frontend will be available at http://localhost:5173
+
+### Mobile App Development Setup
+1. Navigate to the mobile app directory:
+   ```bash
+   cd fibroidcare-mobile
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Download the Expo Go app (SDK 50) on your mobile device.
+
+4. Start the Expo development server:
+   ```bash
+   npx expo start
+   ```
+
+5. Scan the QR code displayed in your terminal or browser using the Expo Go app to run the mobile app on your device.
 
 ## Production Deployment
 
@@ -121,6 +152,10 @@ Deploy frontend and backend separately with proper CORS configuration.
    - Google Cloud Platform
 
 2. Update frontend API calls to point to your backend URL
+
+#### Mobile App (Distribution)
+- Build and publish the mobile app using Expo's build service or eject to React Native for custom builds.
+- Distribute via Expo, Google Play Store, or Apple App Store as needed.
 
 ## Environment Variables
 Set these environment variables for production:
@@ -182,10 +217,16 @@ The frontend uses Tailwind CSS. Customize:
 - Components in `src/components/`
 - Layout in `src/App.jsx`
 
+The mobile app uses React Native and Expo. Customize:
+- Styles in `src/components/`
+- Screens in `src/screens/`
+- Navigation and layout in `App.js`
+
 ### Content
 Update medical content in:
-- `src/components/AboutFibroids.jsx`
-- `src/routes/prediction.py` (recommendations)
+- `src/components/AboutFibroids.jsx` (frontend)
+- `src/routes/prediction.py` (backend recommendations)
+- `src/screens/AboutFibroids.js` (mobile)
 
 ## Monitoring and Logging
 Consider adding:
